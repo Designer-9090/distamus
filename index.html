@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distamus Day Update 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-primary: #0a0e27;
-            --color-accent: #ff6b35;
-            --color-accent-light: #ffa07a;
-            --color-text: #e8e9f3;
-            --color-text-muted: #a0a3bd;
-            --color-bg: #0f1419;
-            --color-card: #1a1f2e;
-            --color-gradient-start: #ff6b35;
-            --color-gradient-end: #f7931e;
+            --color-primary: #1a1d29;
+            --color-secondary: #2a2d3a;
+            --color-accent: #4a9eff;
+            --color-accent-dark: #3b7fcf;
+            --color-success: #5ecc7b;
+            --color-text: #e4e6eb;
+            --color-text-secondary: #9ca3af;
+            --color-bg: #0f1117;
+            --color-card: #1e2130;
+            --gradient-main: linear-gradient(135deg, #4a9eff 0%, #6b5fff 100%);
+            --gradient-hero: linear-gradient(180deg, rgba(15, 17, 23, 0) 0%, rgba(15, 17, 23, 0.8) 100%);
         }
 
         * {
@@ -25,58 +27,25 @@
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--color-bg);
             color: var(--color-text);
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Animated background */
-        .background-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .background-animation::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(247, 147, 30, 0.1) 0%, transparent 50%);
-            animation: backgroundFloat 20s ease-in-out infinite;
-        }
-
-        @keyframes backgroundFloat {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            33% {
-                transform: translate(-5%, -5%) rotate(3deg);
-            }
-            66% {
-                transform: translate(5%, 5%) rotate(-3deg);
-            }
-        }
-
-        /* Navigation */
-        nav {
+        /* Header */
+        header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            padding: 1.5rem 5%;
-            background: rgba(10, 14, 39, 0.8);
-            backdrop-filter: blur(10px);
+            padding: 1.25rem 6%;
+            background: rgba(15, 17, 23, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(74, 158, 255, 0.15);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
-            animation: slideDown 0.6s ease-out;
+            animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes slideDown {
@@ -90,52 +59,31 @@
             }
         }
 
-        .nav-container {
+        .header-content {
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 1rem;
         }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-main);
+            border-radius: 10px;
             display: flex;
-            gap: 2rem;
-            list-style: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
         }
 
-        .nav-links a {
+        .site-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
             color: var(--color-text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+            letter-spacing: -0.3px;
         }
 
         /* Hero Section */
@@ -144,27 +92,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 8rem 5% 4rem;
+            padding: 8rem 6% 4rem;
             position: relative;
+            background: 
+                var(--gradient-hero),
+                url('data:image/svg+xml,<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234a9eff;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%236b5fff;stop-opacity:0.05"/></linearGradient></defs><rect width="1920" height="1080" fill="url(%23g)"/></svg>') center/cover;
         }
 
         .hero-content {
-            max-width: 1400px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text {
-            animation: fadeInUp 0.8s ease-out 0.2s both;
+            max-width: 900px;
+            text-align: center;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -172,345 +116,382 @@
             }
         }
 
-        .hero-year {
-            font-size: 1.2rem;
-            color: var(--color-accent);
-            font-weight: 700;
-            letter-spacing: 3px;
-            margin-bottom: 1rem;
-            display: inline-block;
-            animation: fadeInUp 0.8s ease-out 0.3s both;
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            font-weight: 900;
+        .hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff, var(--color-text));
+            background: linear-gradient(135deg, #ffffff 0%, #4a9eff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
+            letter-spacing: -2px;
         }
 
         .hero-description {
-            font-size: 1.25rem;
-            color: var(--color-text-muted);
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-            animation: fadeInUp 0.8s ease-out 0.5s both;
+            font-size: 1.35rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .cta-button {
+        .cta-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 1.2rem 2.5rem;
-            background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
+            gap: 0.5rem;
             font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            text-decoration: none;
+            padding: 0.5rem 0;
+            position: relative;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
-            animation: fadeInUp 0.8s ease-out 0.6s both;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
-        }
-
-        .cta-button::after {
-            content: '→';
-            font-size: 1.5rem;
+        .cta-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--color-accent);
+            transform: scaleX(1);
             transition: transform 0.3s ease;
         }
 
-        .cta-button:hover::after {
+        .cta-link:hover {
+            color: #fff;
             transform: translateX(5px);
         }
 
-        /* Hero Visual */
-        .hero-visual {
-            position: relative;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
+        .cta-link:hover::after {
+            transform: scaleX(1.1);
         }
 
-        .event-card {
-            background: var(--color-card);
-            border-radius: 30px;
-            padding: 3rem;
-            border: 1px solid rgba(255, 107, 53, 0.2);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
+        /* Main Content */
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 6% 6rem;
         }
 
-        .event-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.8;
-            }
-        }
-
-        .event-date {
-            font-family: 'Playfair Display', serif;
-            font-size: 6rem;
-            font-weight: 900;
-            line-height: 1;
-            background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
+        .event-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .event-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
         }
 
-        .event-subtitle {
-            color: var(--color-text-muted);
-            font-size: 1.1rem;
-            position: relative;
-            z-index: 1;
+        .event-date {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            font-weight: 500;
         }
 
-        /* Features Section */
-        .features {
-            padding: 6rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
+        /* Section */
+        .section {
+            margin-bottom: 5rem;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 1rem;
-            animation: fadeInUp 0.8s ease-out;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .section-subtitle {
-            text-align: center;
-            color: var(--color-text-muted);
-            font-size: 1.2rem;
-            margin-bottom: 4rem;
-            animation: fadeInUp 0.8s ease-out 0.1s both;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
+        .section-content {
             background: var(--color-card);
             padding: 2.5rem;
             border-radius: 20px;
-            border: 1px solid rgba(255, 107, 53, 0.1);
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out both;
-        }
-
-        .feature-card:nth-child(1) { animation-delay: 0.2s; }
-        .feature-card:nth-child(2) { animation-delay: 0.3s; }
-        .feature-card:nth-child(3) { animation-delay: 0.4s; }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--color-accent);
-            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-
-        .feature-card p {
-            color: var(--color-text-muted);
+            border: 1px solid rgba(74, 158, 255, 0.1);
             line-height: 1.8;
+            color: var(--color-text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .faq-item {
+            background: var(--color-card);
+            border: 1px solid rgba(74, 158, 255, 0.1);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(74, 158, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .faq-question {
+            padding: 1.75rem 2rem;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--color-accent);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 2rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 2rem 1.75rem;
+        }
+
+        .faq-answer p {
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .faq-answer a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .faq-answer a:hover {
+            color: #fff;
         }
 
         /* Footer */
         footer {
-            padding: 3rem 5%;
+            padding: 3rem 6%;
             background: var(--color-primary);
-            border-top: 1px solid rgba(255, 107, 53, 0.2);
+            border-top: 1px solid rgba(74, 158, 255, 0.1);
             text-align: center;
-            color: var(--color-text-muted);
         }
 
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
+            color: var(--color-text-secondary);
         }
 
         .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-main);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 1rem;
         }
 
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
+        /* Decorative elements */
+        .glow-effect {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(74, 158, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
+        }
 
-            h1 {
-                font-size: 3rem;
-            }
+        .glow-1 {
+            top: -300px;
+            left: -300px;
+        }
 
-            .event-date {
-                font-size: 4rem;
-            }
+        .glow-2 {
+            bottom: -300px;
+            right: -300px;
+            animation-delay: -10s;
+        }
 
-            .nav-links {
-                display: none;
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-50px, 50px) scale(0.9);
             }
         }
 
-        @media (max-width: 640px) {
-            h1 {
-                font-size: 2.5rem;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 7rem 5% 3rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
             }
 
             .hero-description {
                 font-size: 1.1rem;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .main-content {
+                padding: 3rem 5% 4rem;
             }
 
-            .features-grid {
-                grid-template-columns: 1fr;
+            .section-content {
+                padding: 2rem;
+            }
+
+            .faq-question {
+                padding: 1.5rem;
+                font-size: 1rem;
+            }
+
+            .faq-answer {
+                padding: 0 1.5rem;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 0 1.5rem 1.5rem;
             }
         }
 
         /* Scroll animations */
-        .fade-in-on-scroll {
+        .fade-in-scroll {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.6s ease-out;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .fade-in-on-scroll.visible {
+        .fade-in-scroll.visible {
             opacity: 1;
             transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <div class="background-animation"></div>
+    <div class="glow-effect glow-1"></div>
+    <div class="glow-effect glow-2"></div>
 
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Distamus Day</div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#evento">Evento 2026</a></li>
-                <li><a href="#sobre">Sobre Nosotros</a></li>
-            </ul>
+    <header>
+        <div class="header-content">
+            <div class="logo-icon">👔</div>
+            <div class="site-title">Distamus Day Update</div>
         </div>
-    </nav>
+    </header>
 
-    <section class="hero" id="inicio">
+    <section class="hero">
         <div class="hero-content">
-            <div class="hero-text">
-                <span class="hero-year">2026</span>
-                <h1>¡Hola 2026!</h1>
-                <p class="hero-description">
-                    Comenzamos a preparar el Distamus Day Update. Un evento único que celebra la innovación, 
-                    la creatividad y el futuro. ¡Esperamos que os guste!
+            <h1>¡Hola 2026!</h1>
+            <p class="hero-description">
+                Comenzamos a preparar el Distamus Day Update. ¡Esperamos que os guste!
+            </p>
+            <a href="#detalles" class="cta-link">
+                Ver presentación de 2026 ↗️
+            </a>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="event-header fade-in-scroll">
+            <h2 class="event-title">Distamus Day Update</h2>
+            <p class="event-date">Sábado, Julio 4, 2026 - De 16h a 18h</p>
+        </div>
+
+        <section class="section fade-in-scroll" id="detalles">
+            <h3 class="section-title">Detalles</h3>
+            <div class="section-content">
+                <p>
+                    DDU (Distamus Day Update) es el evento anual de Distamus, celebrado cada 4 de julio, 
+                    donde se presentan las grandes novedades del ecosistema. No es una simple actualización, 
+                    sino un momento clave que marca un antes y un después en la evolución de todos los servicios.
                 </p>
-                <a href="#evento" class="cta-button">
-                    Ver Presentación 2026
-                </a>
             </div>
-            <div class="hero-visual">
-                <div class="event-card">
-                    <div class="event-date">2026</div>
-                    <div class="event-title">Distamus Day Update</div>
-                    <div class="event-subtitle">Próximamente más información</div>
+        </section>
+
+        <section class="faq-section fade-in-scroll">
+            <h3 class="section-title">FAQ</h3>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿Cuándo es Distamus Day Update?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Distamus Day Update se celebrará el 4 de julio.</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="features" id="evento">
-        <h2 class="section-title fade-in-on-scroll">¿Qué es Distamus Day?</h2>
-        <p class="section-subtitle fade-in-on-scroll">Una experiencia inolvidable que te espera</p>
-        
-        <div class="features-grid">
-            <div class="feature-card fade-in-on-scroll">
-                <div class="feature-icon">🚀</div>
-                <h3>Innovación</h3>
-                <p>Descubre las últimas tendencias y tecnologías que están transformando nuestro mundo.</p>
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿Dónde se publicarán todas las novedades?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Todo lo nuevo que anunciemos podrás encontrarlo en el blog de <a href="#">Distamus Blogs</a></p>
+                </div>
             </div>
-            
-            <div class="feature-card fade-in-on-scroll">
-                <div class="feature-icon">🎨</div>
-                <h3>Creatividad</h3>
-                <p>Sumérgete en experiencias únicas diseñadas para inspirar y sorprender a todos los asistentes.</p>
-            </div>
-            
-            <div class="feature-card fade-in-on-scroll">
-                <div class="feature-icon">🌟</div>
-                <h3>Comunidad</h3>
-                <p>Conecta con personas apasionadas que comparten tu visión del futuro y tus intereses.</p>
-            </div>
-        </div>
-    </section>
 
-    <footer id="sobre">
+            <div class="faq-item">
+                <div class="faq-question">
+                    ¿El Distamus Day Update es un evento anual?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Correcto, Distamus Day Update es un evento único y anual que se celebra a principios del verano.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
         <div class="footer-content">
             <div class="footer-logo">Distamus Day Update</div>
-            <p>© 2026 Distamus Day Update. Preparando algo especial para ti.</p>
+            <p>© 2026 Distamus. Todos los derechos reservados.</p>
         </div>
     </footer>
 
@@ -521,18 +502,40 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Intersection Observer for scroll animations
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -543,9 +546,12 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
+        document.querySelectorAll('.fade-in-scroll').forEach(el => {
             observer.observe(el);
         });
+
+        // Auto-open first FAQ item
+        document.querySelector('.faq-item')?.classList.add('active');
     </script>
 </body>
 </html>
