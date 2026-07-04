@@ -9,76 +9,364 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta property="og:image" content="/ddu2026-banner.png">
     <link rel="stylesheet" href="/src/index.css">
-    
     <style>
-      .blogs-hero {
-        padding-top: 150px;
-        padding-bottom: 4rem;
-        text-align: center;
-      }
-      
-      .blog-meta {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 1rem;
-        font-size: 0.8rem;
-        color: var(--text-muted);
-      }
-      
-      .blog-read-btn {
-        margin-top: 2rem;
-        font-family: var(--font-heading);
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-decoration: none;
-        color: var(--accent-cyan);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        transition: transform 0.3s, color 0.3s;
-      }
-      
-      .blog-read-btn:hover {
-        color: var(--text-light);
-        transform: translateX(4px);
-      }
-      
-      .secret-card {
-        margin-top: 6rem;
-        border: 1px dashed rgba(139, 92, 246, 0.25);
-        background: linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, rgba(0, 0, 0, 0.4) 100%);
-        position: relative;
-        overflow: hidden;
-      }
-      
-      .secret-card::after {
-        content: '';
-        position: absolute;
-        bottom: -50px;
-        right: -50px;
-        width: 150px;
-        height: 150px;
-        background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
-        filter: blur(20px);
-        pointer-events: none;
-      }
-      
-      .secret-badge {
-        font-family: var(--font-heading);
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 1px;
-        color: #a78bfa;
-        border: 1px solid rgba(167, 139, 250, 0.2);
-        background: rgba(167, 139, 250, 0.05);
-        padding: 4px 10px;
-        border-radius: 4px;
-        display: inline-block;
-        margin-bottom: 1.5rem;
-      }
+        .blogs-hero {
+            padding-top: 150px;
+            padding-bottom: 4rem;
+            text-align: center;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .secret-card {
+            margin-top: 6rem;
+            border: 1px dashed rgba(139, 92, 246, 0.25);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, rgba(0, 0, 0, 0.4) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .secret-card::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+            filter: blur(20px);
+            pointer-events: none;
+        }
+
+        .secret-badge {
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #a78bfa;
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            background: rgba(167, 139, 250, 0.05);
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        /* =========================================
+            COUNTDOWN PANEL
+            ========================================= */
+        .countdown-panel {
+            position: relative;
+            padding: 1.75rem 2rem;
+            border-radius: 1.25rem;
+            background:
+            radial-gradient(circle at 100% 0%, rgba(139, 92, 246, 0.10) 0%, transparent 55%),
+            rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .countdown-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5cf6, #22d3ee, transparent);
+            opacity: .8;
+        }
+
+        .countdown-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .countdown-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #34d399;
+            background: rgba(52, 211, 153, 0.1);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+            padding: 0.4rem 0.8rem;
+            border-radius: 999px;
+        }
+
+        .countdown-live .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #34d399;
+            box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+            animation: pulse-dot 1.8s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%   { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.55); }
+            70%  { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+        }
+
+        .countdown-panel h2 {
+            margin: 0;
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 3vw, 2.1rem);
+            line-height: 1.15;
+        }
+
+        .countdown-panel h2 span#nextReleaseLabel {
+            background: linear-gradient(90deg, #a78bfa, #22d3ee);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .countdown-item {
+            position: relative;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.1rem 0.9rem;
+            text-align: center;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            transition: border-color .3s ease, background .3s ease;
+        }
+
+        .countdown-item:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            background: rgba(139, 92, 246, 0.06);
+        }
+
+        .countdown-value {
+            display: block;
+            font-family: var(--font-heading);
+            font-variant-numeric: tabular-nums;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 900;
+            color: var(--text-light);
+            letter-spacing: -0.02em;
+        }
+
+        .countdown-label {
+            display: block;
+            margin-top: 0.4rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .countdown-note {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* =========================================
+            BLOG GRID
+            ========================================= */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .blog-card {
+            position: relative;
+            display: grid;
+            align-content: start;
+            gap: 0.6rem;
+            padding: 1.75rem;
+            border-radius: 1.1rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+            overflow: hidden;
+            transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease;
+        }
+
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #f472b6, #f472b6);
+            opacity: .55;
+            transition: opacity .3s ease;
+        }
+
+        .blog-card.is-open::before {
+            background: linear-gradient(90deg, #34d399, #22d3ee);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .blog-card.is-open:hover {
+            border-color: rgba(52, 211, 153, 0.3);
+        }
+
+        .blog-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .blog-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+
+        .blog-time {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #8b5cf6;
+        }
+
+        .blog-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 0.1rem 0 0;
+            color: var(--text-light);
+        }
+
+        .post-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .post-status svg {
+            width: 12px;
+            height: 12px;
+            flex-shrink: 0;
+        }
+
+        .post-status-block {
+            color: #f472b6;
+            background: rgba(244, 114, 182, 0.12);
+            border: 1px solid rgba(244, 114, 182, 0.25);
+        }
+
+        .post-status-open {
+            color: #34d399;
+            background: rgba(52, 211, 153, 0.12);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+        }
+
+        .blog-action {
+            margin-top: 0.6rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.85rem 1rem;
+            gap: 0.5rem;
+
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-decoration: none !important;
+            white-space: nowrap;
+
+            color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+
+            cursor: not-allowed;
+            pointer-events: none;
+            transition: background .25s ease, color .25s ease, transform .25s ease, border-color .25s ease;
+        }
+
+        .blog-action svg {
+            width: 15px;
+            height: 15px;
+            transition: transform .25s ease;
+        }
+
+        .blog-action.post-status-open {
+            color: #34d399;
+            background: rgba(52, 211, 153, 0.08);
+            border-color: rgba(52, 211, 153, 0.3);
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .blog-action.post-status-open:hover {
+            background: rgba(52, 211, 153, 0.16);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .blog-action.post-status-open:hover svg {
+            transform: translateX(4px);
+        }
+
+        .blog-action:focus-visible {
+            outline: 2px solid #22d3ee;
+            outline-offset: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 720px) {
+            .blog-grid {
+            grid-template-columns: 1fr;
+            }
+            .blog-card.full-width {
+            grid-column: auto;
+            }
+            .countdown-grid {
+            gap: 0.5rem;
+            }
+            .countdown-panel {
+            padding: 1.5rem 1.25rem;
+            }
+        }
     </style>
-    
     <!-- Scripts for Decoupled Components -->
     <script type="module" src="/src/components/Header.js"></script>
     <script type="module" src="/src/components/Footer.js"></script>
@@ -112,33 +400,116 @@
 
         <!-- BLOGS GRID -->
         <section class="detalles-section" style="padding-top: 2rem;">
-            <div class="container">
-                
-                <!-- Empty State blogs -->
-                <div class="glass-card reveal-up" style="text-align: center; padding: 5rem 2rem; border: 1px dashed rgba(255, 255, 255, 0.15); margin-bottom: 4rem;">
-                    <div class="card-icon" style="margin: 0 auto 1.5rem; font-size: 2rem; opacity: 0.5;">📰</div>
-                    <h3 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-secondary);">No hay publicaciones de momento</h3>
-                    <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto; line-height: 1.6;">
-                        La sección de blogs se encuentra vacía de momento. Las entradas oficiales de Distamus Blogs correspondientes al lanzamiento se subirán en este apartado próximamente.
-                    </p>
-                </div>
+        <div class="container">
 
-                <!-- SECRET ACCORDION / CARD ONLY AVAILABLE HERE -->
-                <div class="glass-card secret-card reveal-up">
-                    <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                        <span class="secret-badge">📁 REGISTRO RESTRINGIDO</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem;">Terminal de Control Encriptada</h3>
-                        <p style="color: var(--text-secondary); max-width: 700px; margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.7;">
-                            Esta sección contiene un enlace cifrado que conecta directamente con la base de datos de desarrollo. Acceda para descifrar pistas exclusivas y coordenadas sobre el diseño y la ambientación de **DDU 2026**.
-                        </p>
-                        <a href="secret-vault.html" class="btn btn-outline" style="border-color: rgba(167, 139, 250, 0.4); color: #c084fc; font-size: 0.85rem; padding: 0.8rem 1.8rem;">
-                            🔒 Descifrar Pistas Secretas
-                        </a>
-                    </div>
-                </div>
-
+            <div class="glass-card countdown-panel reveal-up">
+            <div class="countdown-header">
+                <span class="section-tag" style="margin:0;">Cuenta regresiva</span>
+                <span class="countdown-live"><span class="live-dot"></span>En directo</span>
             </div>
-        </section>
+            <h2>Próxima publicación: <span id="nextReleaseLabel">10 jul • 12:00</span></h2>
+            <div class="countdown-grid">
+                <div class="countdown-item">
+                <span class="countdown-value" id="countdownDays">00</span>
+                <span class="countdown-label">Días</span>
+                </div>
+                <div class="countdown-item">
+                <span class="countdown-value" id="countdownHours">00</span>
+                <span class="countdown-label">Horas</span>
+                </div>
+                <div class="countdown-item">
+                <span class="countdown-value" id="countdownMinutes">00</span>
+                <span class="countdown-label">Min</span>
+                </div>
+                <div class="countdown-item">
+                <span class="countdown-value" id="countdownSeconds">00</span>
+                <span class="countdown-label">Seg</span>
+                </div>
+            </div>
+            <p class="countdown-note">Todas las publicaciones están en estado <strong>PRÓXIMAMENTE</strong>. Los contenidos se activarán de forma progresiva en la página.</p>
+            </div>
+
+            <!-- Mysterious blog posts -->
+            <div class="blog-grid">
+
+            <div class="glass-card blog-card reveal-up">
+                <div class="blog-card-top">
+                <span class="blog-time">12:00</span>
+                <span class="post-status post-status-block">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Próximamente
+                </span>
+                </div>
+                <h3 class="blog-title">Primer anuncio</h3>
+                <a href="" target="_blank" rel="noopener noreferrer" class="blog-action post-status-block" aria-disabled="true" tabindex="-1">
+                Acceder al enlace
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+
+            <div class="glass-card blog-card reveal-up">
+                <div class="blog-card-top">
+                <span class="blog-time">13:00</span>
+                <span class="post-status post-status-block">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Próximamente
+                </span>
+                </div>
+                <h3 class="blog-title">Segundo anuncio</h3>
+                <a href="" target="_blank" rel="noopener noreferrer" class="blog-action post-status-block" aria-disabled="true" tabindex="-1">
+                Acceder al enlace
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+
+            <div class="glass-card blog-card reveal-up">
+                <div class="blog-card-top">
+                <span class="blog-time">16:00</span>
+                <span class="post-status post-status-block">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Próximamente
+                </span>
+                </div>
+                <h3 class="blog-title">Tercer anuncio</h3>
+                <a href="" target="_blank" rel="noopener noreferrer" class="blog-action post-status-block" aria-disabled="true" tabindex="-1">
+                Acceder al enlace
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+
+            <div class="glass-card blog-card reveal-up">
+                <div class="blog-card-top">
+                <span class="blog-time">17:00</span>
+                <span class="post-status post-status-block">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Próximamente
+                </span>
+                </div>
+                <h3 class="blog-title">Cuarto anuncio</h3>
+                <a href="" target="_blank" rel="noopener noreferrer" class="blog-action post-status-block" aria-disabled="true" tabindex="-1">
+                Acceder al enlace
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+
+            <div class="glass-card blog-card full-width reveal-up">
+                <div class="blog-card-top">
+                <span class="blog-time">21:00</span>
+                <span class="post-status post-status-block">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Próximamente
+                </span>
+                </div>
+                <h3 class="blog-title">Anuncio final &amp; cierre</h3>
+                <a href="" target="_blank" rel="noopener noreferrer" class="blog-action post-status-block" aria-disabled="true" tabindex="-1">
+                Acceder al enlace
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+                <p class="blog-summary" style="display:none;">Despedida final.</p>
+            </div>
+            </div>
+        </div>
+    </section>
     </main>
 
     <!-- Decoupled Footer component -->
@@ -181,6 +552,62 @@
         }
         setInterval(updateTermClock, 1000);
         updateTermClock();
+
+        const releaseSchedule = [
+          { label: '10 jul • 12:00', date: new Date(2026, 6, 10, 12, 0, 0) },
+          { label: '10 jul • 13:00', date: new Date(2026, 6, 10, 13, 0, 0) },
+          { label: '10 jul • 16:00', date: new Date(2026, 6, 10, 16, 0, 0) },
+          { label: '10 jul • 17:00', date: new Date(2026, 6, 10, 17, 0, 0) },
+          { label: '10 jul • 21:00', date: new Date(2026, 6, 10, 21, 0, 0) },
+        ];
+
+        function getNextRelease() {
+          const now = new Date();
+          return releaseSchedule.find(release => release.date > now) || null;
+        }
+
+        function formatCountdown(milliseconds) {
+          if (milliseconds <= 0) {
+            return { days: '00', hours: '00', minutes: '00', seconds: '00' };
+          }
+          const totalSeconds = Math.floor(milliseconds / 1000);
+          const days = String(Math.floor(totalSeconds / 86400)).padStart(2, '0');
+          const hours = String(Math.floor((totalSeconds % 86400) / 3600)).padStart(2, '0');
+          const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+          const seconds = String(totalSeconds % 60).padStart(2, '0');
+          return { days, hours, minutes, seconds };
+        }
+
+        function updateReleaseCountdown() {
+          const nextRelease = getNextRelease();
+          const labelEl = document.getElementById('nextReleaseLabel');
+          const daysEl = document.getElementById('countdownDays');
+          const hoursEl = document.getElementById('countdownHours');
+          const minutesEl = document.getElementById('countdownMinutes');
+          const secondsEl = document.getElementById('countdownSeconds');
+
+          if (!labelEl || !daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+          if (nextRelease) {
+            const now = new Date();
+            const remaining = nextRelease.date - now;
+            labelEl.textContent = nextRelease.label;
+            const countdown = formatCountdown(remaining);
+            daysEl.textContent = countdown.days;
+            hoursEl.textContent = countdown.hours;
+            minutesEl.textContent = countdown.minutes;
+            secondsEl.textContent = countdown.seconds;
+          } else {
+            labelEl.textContent = '10 jul • 21:00';
+            daysEl.textContent = '00';
+            hoursEl.textContent = '00';
+            minutesEl.textContent = '00';
+            secondsEl.textContent = '00';
+          }
+        }
+
+        setInterval(updateReleaseCountdown, 1000);
+        updateReleaseCountdown();
     </script>
     <!-- Terminal Status Bar -->
     <div class="terminal-statusbar" aria-hidden="true">
