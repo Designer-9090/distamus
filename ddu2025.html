@@ -1,321 +1,234 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distamus Update 2025 (DU 2025) — Archivo Histórico</title>
     <meta name="description" content="DDU 2025 (Distamus Update 2025) - Bienvenidos a la primera edición de Distamus Update 2025. Conoce los detalles de esta edición histórica.">
     <link rel="icon" type="image/webp" href="distamuslogo.webp">
-    
-    
-    <!-- Google Fonts for historical Syne/DM Sans combination -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    
-    <!-- Global Styles -->
-    <link rel="stylesheet" href="/src/index.css">
-    
-    <!-- Custom Gold/Amber styling overrides for the historical theme -->
-    <style>
-      :root {
-        --bg-color: #06050b;
-        --bg-darker: #020104;
-        --text-light: #ffffff;
-        --text-secondary: #e6dfcf;
-        --text-muted: #948e82;
-        --accent-purple: #c8a96e; /* Historical Gold */
-        --accent-cyan: #e5c184; /* Amber Accent */
-        --accent-glow-purple: rgba(200, 169, 110, 0.2);
-        --accent-glow-cyan: rgba(229, 193, 132, 0.2);
-        --gradient-primary: linear-gradient(135deg, #c8a96e 0%, #ebdcb9 100%);
-        --gradient-glow: linear-gradient(135deg, rgba(200, 169, 110, 0.4) 0%, rgba(229, 193, 132, 0.4) 100%);
-        --gradient-dark: linear-gradient(180deg, #06050b 0%, #020104 100%);
-        
-        --font-heading: 'Syne', sans-serif;
-        --font-body: 'DM Sans', sans-serif;
-      }
-      
-      .archive-hero {
-        min-height: 75vh;
-        padding-top: 120px;
-        padding-bottom: 4rem;
-        display: flex;
-        align-items: center;
-      }
-      
-      .badge-archive {
-        color: var(--accent-cyan);
-        background: rgba(229, 193, 132, 0.08);
-        border: 1px solid rgba(229, 193, 132, 0.2);
-      }
-      
-      .badge-archive::before {
-        background-color: var(--accent-cyan);
-        box-shadow: 0 0 8px var(--accent-cyan);
-      }
-      
-      .rip-card::before {
-        background: linear-gradient(135deg, #ef4444 0%, #991b1b 100%) !important;
-      }
-      
-      .rip-tag {
-        color: #ef4444 !important;
-        background: rgba(239, 68, 68, 0.08) !important;
-        border: 1px solid rgba(239, 68, 68, 0.2) !important;
-      }
-      
-      .list-bullets {
-        list-style: none;
-        margin-top: 1rem;
-        padding-left: 0;
-      }
-      
-      .list-bullets li {
-        position: relative;
-        padding-left: 1.5rem;
-        margin-bottom: 0.75rem;
-        font-size: 0.92rem;
-        color: var(--text-secondary);
-      }
-      
-      .list-bullets li::before {
-        content: "—";
-        position: absolute;
-        left: 0;
-        color: var(--accent-purple);
-      }
-      
-      .tech-innovations {
-        margin-top: 1.25rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        padding-top: 1rem;
-      }
-      
-      .tech-innovations h5 {
-        font-family: var(--font-heading);
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: var(--text-light);
-        margin-bottom: 0.5rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-      
-      /* Subtle adjustments for dynamic elements */
-      .glow-orb.orb-purple {
-        background: var(--accent-purple);
-      }
-      .glow-orb.orb-cyan {
-        background: var(--accent-cyan);
-      }
-    </style>
-    
-    <!-- Scripts for Decoupled Components -->
-    <script type="module" src="/src/components/Header.js"></script>
-    <script type="module" src="/src/components/Footer.js"></script>
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Ambient Space Background -->
-    <div class="bg-ambient" aria-hidden="true">
-        <div class="noise-overlay"></div>
-        <div class="glow-orb orb-purple"></div>
-        <div class="glow-orb orb-cyan"></div>
-        <div class="glow-orb orb-center"></div>
+    <link rel="stylesheet" href="/src/tailwind.css">
+</head>
+<body class="overflow-x-hidden bg-slate-950 text-slate-100 font-sans antialiased selection:bg-amber-400/30">
+
+    <!-- ============ AMBIENT BACKGROUND (muted, archival gold) ============ -->
+    <div class="fixed inset-0 -z-10 overflow-hidden bg-slate-950" aria-hidden="true">
+        <div class="absolute -top-40 -left-40 h-[36rem] w-[36rem] rounded-full bg-amber-500/15 blur-[120px] animate-float-slow"></div>
+        <div class="absolute -bottom-32 -right-20 h-[32rem] w-[32rem] rounded-full bg-yellow-400/10 blur-[120px] animate-float-slower"></div>
+        <div class="absolute top-1/3 left-1/3 h-[24rem] w-[24rem] rounded-full bg-amber-500/5 blur-[140px]"></div>
     </div>
 
-    <!-- Decoupled Header component -->
-    <distamus-header></distamus-header>
+    <!-- ============ HEADER ============ -->
+    <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
+                <a href="index.html#inicio" class="flex items-center gap-3">
+                    <img src="distamuslogo.webp" alt="Distamus" class="h-8 w-8 rounded-lg shadow-[0_0_15px_rgba(200,169,110,0.45)]">
+                    <span class="font-display text-lg font-bold tracking-tight text-white">Distamus</span>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-10">
+                    <a href="index.html#inicio" class="text-sm font-medium text-slate-400 transition-colors hover:text-white">Inicio</a>
+                    <a href="index.html#filosofia" class="text-sm font-medium text-slate-400 transition-colors hover:text-white">Filosofía</a>
+                    <a href="index.html#detalles" class="text-sm font-medium text-slate-400 transition-colors hover:text-white">Evolución</a>
+                    <a href="index.html#esperar" class="text-sm font-medium text-slate-400 transition-colors hover:text-white">Novedades</a>
+                    <a href="next-chapter.html" class="text-sm font-medium text-slate-400 transition-colors hover:text-white">Blogs</a>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <a href="index.html" class="hidden md:inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10">Ir a DDU 2026 →</a>
+                    <button id="menuToggle" class="flex h-6 w-6 flex-col items-center justify-center gap-1.5 md:hidden" aria-label="Abrir menú" aria-expanded="false">
+                        <span id="barTop" class="block h-0.5 w-6 origin-center rounded-full bg-white transition-transform duration-300 ease-out"></span>
+                        <span id="barMid" class="block h-0.5 w-6 rounded-full bg-white transition-opacity duration-200 ease-out"></span>
+                        <span id="barBot" class="block h-0.5 w-6 origin-center rounded-full bg-white transition-transform duration-300 ease-out"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="overflow-hidden border-t md:hidden" style="max-height: 0px; opacity: 0; border-top-color: transparent; transition: max-height .35s ease, opacity .25s ease, border-color .35s ease;">
+            <div id="mobileMenuInner" class="flex flex-col gap-1 bg-slate-950/95 px-6 py-6 backdrop-blur-xl">
+                <a href="index.html#inicio" class="rounded-xl px-4 py-3 text-base text-slate-200 hover:bg-white/5">Inicio</a>
+                <a href="index.html#filosofia" class="rounded-xl px-4 py-3 text-base text-slate-200 hover:bg-white/5">Filosofía</a>
+                <a href="index.html#detalles" class="rounded-xl px-4 py-3 text-base text-slate-200 hover:bg-white/5">Evolución</a>
+                <a href="index.html#esperar" class="rounded-xl px-4 py-3 text-base text-slate-200 hover:bg-white/5">Novedades</a>
+                <a href="next-chapter.html" class="rounded-xl px-4 py-3 text-base text-slate-200 hover:bg-white/5">Blogs</a>
+                <a href="index.html" class="mt-2 inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-3 text-base font-medium text-white">Ir a DDU 2026 →</a>
+            </div>
+        </div>
+    </header>
 
     <main>
-        <!-- HERO SECTION -->
-        <section class="hero archive-hero" id="inicio">
-            <div class="container hero-grid">
-                <div class="hero-content reveal-up">
-                    <div class="badge-official badge-archive">Archivo Histórico DDU 2025</div>
-                    <h1>Distamus Update 2025 <br><span class="accent-gradient">(DU 2025)</span></h1>
-                    <p class="hero-desc">
+        <!-- ============ HERO ============ -->
+        <section class="relative overflow-hidden pt-40 pb-20 lg:pt-48" id="inicio">
+            <div class="absolute inset-0 bg-[image:linear-gradient(rgba(200,169,110,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(229,193,132,0.07)_1px,transparent_1px)] bg-[length:56px_56px] [mask-image:radial-gradient(ellipse_65%_55%_at_30%_40%,black,transparent_75%)]" aria-hidden="true"></div>
+
+            <div class="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-8">
+                <div class="reveal opacity-0 -translate-y-4 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 transition-all duration-700 ease-out">
+                    <div class="mb-8 inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-amber-300">
+                        <span class="h-1.5 w-1.5 rounded-full bg-amber-300"></span>
+                        Archivo Histórico DDU 2025
+                    </div>
+                    <h1 class="font-display text-5xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl">
+                        Distamus Update 2025
+                        <br>
+                        <span class="bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400 bg-clip-text text-transparent">(DU 2025)</span>
+                    </h1>
+                    <p class="mt-6 max-w-xl text-lg font-light leading-relaxed text-slate-400">
                         Bienvenidos a la primera edición de Distamus Update 2025.
                     </p>
-                    <div class="hero-ctas">
-                        <a href="#detalles" class="btn btn-accent" id="btnExplore">Ver anuncios</a>
-                        <a href="ddu2026.html" class="btn btn-outline" id="btnGoLatest">Ver edición 2026</a>
+                    <div class="mt-10 flex flex-wrap gap-4">
+                        <a href="#detalles" id="btnExplore" class="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-amber-400 to-yellow-300 px-8 py-4 text-sm font-semibold text-slate-950 shadow-[0_8px_30px_rgba(200,169,110,0.35)] transition-transform hover:-translate-y-0.5">
+                            Ver anuncios
+                        </a>
+                        <a href="ddu2026.html" id="btnGoLatest" class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 py-4 text-sm font-semibold text-white backdrop-blur-md transition-colors hover:border-amber-400/30 hover:bg-white/10">
+                            Ver edición 2026
+                        </a>
                     </div>
                 </div>
 
-                <div class="hero-visual reveal-up" style="transition-delay: 0.15s;">
-                    <div class="glass-card">
-                        <div class="section-tag" style="margin-bottom: 0.5rem;">Presentación Oficial</div>
-                        <p style="font-size: 1.05rem; font-weight: 300; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                            <strong>DU 2025</strong> no es solo una actualización más. Esta primera edición del Distamus Update marca un antes y un después en nuestra historia, donde la transparencia y la ambición se unen para mostrar la evolución completa de nuestro ecosistema.
+                <div class="reveal relative opacity-0 translate-y-6 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 transition-all duration-700 ease-out delay-150">
+                    <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-xl sm:p-10">
+                        <span class="mb-3 block text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Presentación Oficial</span>
+                        <p class="text-[1.05rem] font-light leading-relaxed text-slate-300">
+                            <strong class="font-semibold text-white">DU 2025</strong> no es solo una actualización más. Esta primera edición del Distamus Update marca un antes y un después en nuestra historia, donde la transparencia y la ambición se unen para mostrar la evolución completa de nuestro ecosistema.
                         </p>
-                        <div class="brand-note" style="border-left: 2px solid var(--accent-purple); padding-left: 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
-                            <strong>Nota de marca:</strong> Aunque el evento se presentó inicialmente como <em>Distamus Update</em>, su denominación oficial es <strong>Distamus Day Update</strong>. Este fue el primer nombre que concibió el CEO, pero con el fin de hacerlo más intrigante y asegurar que representara el mejor día para el ecosistema, le añadió la palabra "Day".
+                        <div class="mt-6 border-l-2 border-amber-400 pl-4 text-sm leading-relaxed text-slate-500">
+                            <strong class="text-slate-300">Nota de marca:</strong> Aunque el evento se presentó inicialmente como <em>Distamus Update</em>, su denominación oficial es <strong class="text-slate-300">Distamus Day Update</strong>. Este fue el primer nombre que concibió el CEO, pero con el fin de hacerlo más intrigante y asegurar que representara el mejor día para el ecosistema, le añadió la palabra "Day".
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ANUNCIOS GRID SECTION -->
-        <section class="detalles-section" id="detalles">
-            <div class="container">
-                <div class="section-header reveal-up">
-                    <h2>Anuncios y Lanzamientos</h2>
-                    <p>Repaso detallado de todos los servicios presentados e hitos conseguidos durante la primera edición.</p>
+        <!-- ============ ANUNCIOS GRID ============ -->
+        <section class="relative py-24" id="detalles">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="reveal mx-auto mb-16 max-w-2xl text-center opacity-0 translate-y-6 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 transition-all duration-700 ease-out">
+                    <h2 class="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Anuncios y Lanzamientos</h2>
+                    <p class="mt-4 text-lg font-light text-slate-400">Repaso detallado de todos los servicios presentados e hitos conseguidos durante la primera edición.</p>
                 </div>
-                
-                <div class="grid-3">
-                    
-                    <!-- 1-Distamus Edu v3 -->
-                    <div class="interactive-card reveal-up">
-                        <div class="card-icon" aria-hidden="true">🎓</div>
-                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Educación</div>
-                        <h3>1. Distamus Edu v3</h3>
-                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
-                            Llega a finales de Septiembre (2025)
-                        </p>
-                        <p>
-                            La educación nunca volverá a ser la misma. Distamus Edu v3 llegará este julio con mejoras que transformarán la experiencia de aprendizaje:
-                        </p>
-                        <ul class="list-bullets">
-                            <li><strong>Mejoras sustanciales en las materias:</strong> Contenido actualizado y optimizado para el aprendizaje moderno.</li>
-                            <li><strong>Sistema de boletines renovado:</strong> Seguimiento más preciso y detallado del progreso académico.</li>
-                            <li><strong>Exámenes modelo PAU y Bachillerato:</strong> Preparación integral para los desafíos académicos más importantes.</li>
-                            <li><strong>Y mucho más:</strong> Funcionalidades que descubrirás al explorar la nueva versión.</li>
+
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+                    <!-- 1. Distamus Edu v3 -->
+                    <div class="reveal group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 opacity-0 translate-y-6 backdrop-blur-xl transition-all duration-300 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 hover:-translate-y-1 hover:border-amber-400/20 hover:shadow-[0_25px_70px_-20px_rgba(200,169,110,0.35)]">
+                        <span class="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-amber-400 to-yellow-200 transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-2xl">🎓</div>
+                        <span class="mb-4 inline-block rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-amber-300">Educación</span>
+                        <h3 class="mb-2 font-display text-lg font-bold text-white">1. Distamus Edu v3</h3>
+                        <p class="mb-3 text-sm font-semibold text-amber-300">Llega a finales de Septiembre (2025)</p>
+                        <p class="text-sm leading-relaxed text-slate-400">La educación nunca volverá a ser la misma. Distamus Edu v3 llegará este julio con mejoras que transformarán la experiencia de aprendizaje:</p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex gap-2 text-sm leading-relaxed text-slate-400"><span class="text-amber-400">—</span><span><strong class="text-slate-200">Mejoras sustanciales en las materias:</strong> Contenido actualizado y optimizado para el aprendizaje moderno.</span></li>
+                            <li class="flex gap-2 text-sm leading-relaxed text-slate-400"><span class="text-amber-400">—</span><span><strong class="text-slate-200">Sistema de boletines renovado:</strong> Seguimiento más preciso y detallado del progreso académico.</span></li>
+                            <li class="flex gap-2 text-sm leading-relaxed text-slate-400"><span class="text-amber-400">—</span><span><strong class="text-slate-200">Exámenes modelo PAU y Bachillerato:</strong> Preparación integral para los desafíos académicos más importantes.</span></li>
+                            <li class="flex gap-2 text-sm leading-relaxed text-slate-400"><span class="text-amber-400">—</span><span><strong class="text-slate-200">Y mucho más:</strong> Funcionalidades que descubrirás al explorar la nueva versión.</span></li>
                         </ul>
                     </div>
 
-                    <!-- 2-Distamus Time v2.7 -->
-                    <div class="interactive-card reveal-up" style="transition-delay: 0.05s;">
-                        <div class="card-icon" aria-hidden="true">⏱️</div>
-                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Productividad</div>
-                        <h3>2. Distamus Time v2.7</h3>
-                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
-                            Redefiniendo la Gestión del Tiempo
-                        </p>
-                        <p>
-                            A finales de noviembre, el tiempo cobrará una nueva dimensión con Distamus Time v2.7. Esta actualización trae consigo:
-                        </p>
-                        <div class="tech-innovations">
-                            <h5>Innovaciones Técnicas:</h5>
-                            <ul class="list-bullets" style="margin-top: 0.5rem;">
-                                <li><strong>Mejoras de rendimiento significativas:</strong> Experiencia más fluida y responsiva.</li>
-                                <li><strong>Multi-Time v2.5:</strong> La evolución del sistema de gestión múltiple de tiempo incorpora un reloj analógico mejorado, con precisión refinada y una estética cuidada. No es solo decorativo, sino funcional: aporta claridad, sincronización eficaz y refuerza el diseño del sistema.</li>
+                    <!-- 2. Distamus Time v2.7 -->
+                    <div class="reveal group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 opacity-0 translate-y-6 backdrop-blur-xl transition-all duration-300 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 hover:-translate-y-1 hover:border-amber-400/20 hover:shadow-[0_25px_70px_-20px_rgba(200,169,110,0.35)] delay-75">
+                        <span class="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-amber-400 to-yellow-200 transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-2xl">⏱️</div>
+                        <span class="mb-4 inline-block rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-amber-300">Productividad</span>
+                        <h3 class="mb-2 font-display text-lg font-bold text-white">2. Distamus Time v2.7</h3>
+                        <p class="mb-3 text-sm font-semibold text-amber-300">Redefiniendo la Gestión del Tiempo</p>
+                        <p class="text-sm leading-relaxed text-slate-400">A finales de noviembre, el tiempo cobrará una nueva dimensión con Distamus Time v2.7. Esta actualización trae consigo:</p>
+                        <div class="mt-5 border-t border-white/5 pt-4">
+                            <h5 class="mb-2 font-display text-xs font-bold uppercase tracking-wider text-white">Innovaciones Técnicas:</h5>
+                            <ul class="space-y-2">
+                                <li class="flex gap-2 text-sm leading-relaxed text-slate-400"><span class="text-amber-400">—</span><span><strong class="text-slate-200">Mejoras de rendimiento significativas:</strong> Experiencia más fluida y responsiva.</span></li>
+                                <li class="flex gap-2 text-sm leading-relaxed text-slate-400"><span class="text-amber-400">—</span><span><strong class="text-slate-200">Multi-Time v2.5:</strong> La evolución del sistema de gestión múltiple de tiempo incorpora un reloj analógico mejorado, con precisión refinada y una estética cuidada. No es solo decorativo, sino funcional: aporta claridad, sincronización eficaz y refuerza el diseño del sistema.</span></li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- 3-Distamus Book -->
-                    <div class="interactive-card reveal-up" style="transition-delay: 0.1s;">
-                        <div class="card-icon" aria-hidden="true">📚</div>
-                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Biblioteca</div>
-                        <h3>3. Distamus Book</h3>
-                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
-                            El Conocimiento Sin Fronteras
-                        </p>
-                        <ul class="list-bullets" style="margin-top: 0;">
+                    <!-- 3. Distamus Book -->
+                    <div class="reveal group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 opacity-0 translate-y-6 backdrop-blur-xl transition-all duration-300 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 hover:-translate-y-1 hover:border-amber-400/20 hover:shadow-[0_25px_70px_-20px_rgba(200,169,110,0.35)] delay-100">
+                        <span class="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-amber-400 to-yellow-200 transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-2xl">📚</div>
+                        <span class="mb-4 inline-block rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-amber-300">Biblioteca</span>
+                        <h3 class="mb-2 font-display text-lg font-bold text-white">3. Distamus Book</h3>
+                        <p class="mb-3 text-sm font-semibold text-amber-300">El Conocimiento Sin Fronteras</p>
+                        <ul class="space-y-4">
                             <li>
-                                <strong>Distamus Book v1.5 (Septiembre 2025):</strong>
-                                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.25rem;">
-                                    Tendrá todos los libros en todos los idiomas.
-                                </p>
+                                <strong class="text-sm text-slate-200">Distamus Book v1.5 (Septiembre 2025):</strong>
+                                <p class="mt-1 text-sm text-slate-500">Tendrá todos los libros en todos los idiomas.</p>
                             </li>
-                            <li style="margin-top: 1rem;">
-                                <strong>Distamus Book v2 (Fecha por Definir):</strong>
-                                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.25rem;">
-                                    La próxima generación de libros digitales está en desarrollo. Mejoras sustanciales que elevarán la experiencia de lectura a nuevos niveles.
-                                </p>
+                            <li>
+                                <strong class="text-sm text-slate-200">Distamus Book v2 (Fecha por Definir):</strong>
+                                <p class="mt-1 text-sm text-slate-500">La próxima generación de libros digitales está en desarrollo. Mejoras sustanciales que elevarán la experiencia de lectura a nuevos niveles.</p>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- 4-Distamus News -->
-                    <div class="interactive-card rip-card reveal-up" style="transition-delay: 0.15s;">
-                        <div class="card-icon" aria-hidden="true" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.15);">🪦</div>
-                        <div class="badge-official rip-tag" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Cerrado (R.I.P)</div>
-                        <h3>4. Distamus News</h3>
-                        <p style="font-size: 0.85rem; font-weight: 600; color: #ef4444; margin-bottom: 0.75rem;">
-                            Abril 2025 - Julio 2025
-                        </p>
-                        <p style="color: var(--text-secondary);">
-                            Distamus News se despide hoy. Fue un canal clave para mantenerte informado, pero ha cumplido su ciclo. No desaparece su función, sino su forma: su esencia será asumida por tecnologías más modernas y estructuradas. A partir de DU 2025, Distamus News queda oficialmente cerrado.
-                        </p>
+                    <!-- 4. Distamus News (R.I.P) -->
+                    <div class="reveal group relative overflow-hidden rounded-3xl border border-red-500/15 bg-white/[0.02] p-8 opacity-0 translate-y-6 backdrop-blur-xl transition-all duration-300 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 hover:-translate-y-1 hover:border-red-500/30 hover:shadow-[0_25px_70px_-20px_rgba(239,68,68,0.35)] delay-150">
+                        <span class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-red-500 to-red-800" aria-hidden="true"></span>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-red-500/15 bg-white/5 text-2xl text-red-400">🪦</div>
+                        <span class="mb-4 inline-block rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-red-400">Cerrado (R.I.P)</span>
+                        <h3 class="mb-2 font-display text-lg font-bold text-white">4. Distamus News</h3>
+                        <p class="mb-3 text-sm font-semibold text-red-400">Abril 2025 - Julio 2025</p>
+                        <p class="text-sm leading-relaxed text-slate-300">Distamus News se despide hoy. Fue un canal clave para mantenerte informado, pero ha cumplido su ciclo. No desaparece su función, sino su forma: su esencia será asumida por tecnologías más modernas y estructuradas. A partir de DU 2025, Distamus News queda oficialmente cerrado.</p>
                     </div>
 
-                    <!-- 5-Distamus AI -->
-                    <div class="interactive-card reveal-up" style="transition-delay: 0.2s;">
-                        <div class="card-icon" aria-hidden="true">🤖</div>
-                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Inteligencia Artificial</div>
-                        <h3>5. Distamus AI</h3>
-                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
-                            Mucho más que inteligencia (2027)
-                        </p>
-                        <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 1rem;">
-                            Distamus AI no será un asistente. Será un núcleo cognitivo estructural que actuará como cerebro distribuido de todo Distamus.
-                        </p>
-                        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
-                            Entre sus múltiples funciones estará la de gestionar noticias, fuentes, enlaces, autores y derechos. Y aquí es importante ser claros:
-                        </p>
-                        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-top: 0.5rem;">
-                            Cuando Distamus AI utilice un enlace a una fuente externa, no se monetizará ni se pagará al autor. El sistema pondrá dicho enlace para que el usuario se redirija directamente al usuario para que pueda navegar el contenido en su web original, evitando descargarlo, copiarlo o representarlo internamente.
-                        </p>
-                        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-top: 0.5rem; font-style: italic;">
-                            Esta decisión es deliberada y preventiva. No queremos incurrir en situaciones como la demanda del New York Times contra OpenAI el 27 de diciembre de 2023, donde se acusó a la IA de reproducir contenido protegido sin licencia ni compensación. Asimismo, evitamos conflictos legales con servicios como Cloudflare, cuya infraestructura y políticas de acceso están bajo fuerte presión por peleas similares.
-                        </p>
+                    <!-- 5. Distamus AI -->
+                    <div class="reveal group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 opacity-0 translate-y-6 backdrop-blur-xl transition-all duration-300 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 hover:-translate-y-1 hover:border-amber-400/20 hover:shadow-[0_25px_70px_-20px_rgba(200,169,110,0.35)] delay-200">
+                        <span class="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-amber-400 to-yellow-200 transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-2xl">🤖</div>
+                        <span class="mb-4 inline-block rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-amber-300">Inteligencia Artificial</span>
+                        <h3 class="mb-2 font-display text-lg font-bold text-white">5. Distamus AI</h3>
+                        <p class="mb-3 text-sm font-semibold text-amber-300">Mucho más que inteligencia (2027)</p>
+                        <p class="mb-3 text-sm leading-relaxed text-slate-300">Distamus AI no será un asistente. Será un núcleo cognitivo estructural que actuará como cerebro distribuido de todo Distamus.</p>
+                        <p class="mb-2 text-[0.88rem] leading-relaxed text-slate-500">Entre sus múltiples funciones estará la de gestionar noticias, fuentes, enlaces, autores y derechos. Y aquí es importante ser claros:</p>
+                        <p class="mb-2 text-[0.88rem] leading-relaxed text-slate-500">Cuando Distamus AI utilice un enlace a una fuente externa, no se monetizará ni se pagará al autor. El sistema pondrá dicho enlace para que el usuario se redirija directamente al usuario para que pueda navegar el contenido en su web original, evitando descargarlo, copiarlo o representarlo internamente.</p>
+                        <p class="text-[0.88rem] italic leading-relaxed text-slate-500">Esta decisión es deliberada y preventiva. No queremos incurrir en situaciones como la demanda del New York Times contra OpenAI el 27 de diciembre de 2023, donde se acusó a la IA de reproducir contenido protegido sin licencia ni compensación. Asimismo, evitamos conflictos legales con servicios como Cloudflare, cuya infraestructura y políticas de acceso están bajo fuerte presión por peleas similares.</p>
                     </div>
 
-                    <!-- 6- Nuevo servicio de Distamus -->
-                    <div class="interactive-card reveal-up" style="transition-delay: 0.25s;">
-                        <div class="card-icon" aria-hidden="true">🚀</div>
-                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Desarrollo</div>
-                        <h3>6. Nuevo servicio</h3>
-                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
-                            Evolución de Ecosistema
-                        </p>
-                        <p>
-                            Implementaremos un servicio adicional de Distamus, aún por definir, debido a la finalización de Distamus News.
-                        </p>
+                    <!-- 6. Nuevo servicio -->
+                    <div class="reveal group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 opacity-0 translate-y-6 backdrop-blur-xl transition-all duration-300 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 hover:-translate-y-1 hover:border-amber-400/20 hover:shadow-[0_25px_70px_-20px_rgba(200,169,110,0.35)] delay-[250ms]">
+                        <span class="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-amber-400 to-yellow-200 transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-2xl">🚀</div>
+                        <span class="mb-4 inline-block rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-amber-300">Desarrollo</span>
+                        <h3 class="mb-2 font-display text-lg font-bold text-white">6. Nuevo servicio</h3>
+                        <p class="mb-3 text-sm font-semibold text-amber-300">Evolución de Ecosistema</p>
+                        <p class="text-sm leading-relaxed text-slate-400">Implementaremos un servicio adicional de Distamus, aún por definir, debido a la finalización de Distamus News.</p>
                     </div>
 
                     <!-- 7. Servidor de Discord -->
-                    <div class="interactive-card reveal-up" style="transition-delay: 0.3s;">
-                        <div class="card-icon" aria-hidden="true">💬</div>
-                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Comunidad</div>
-                        <h3>7. Servidor de Discord</h3>
-                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
-                            Canal de Comunicación
-                        </p>
-                        <p>
-                            En una próxima mini actualización se añadirá el botón de acceso a nuestro servidor de Discord. Aunque estaba previsto para hoy, han surgido imprevistos que requieren mejoras adicionales antes de su publicación.
-                        </p>
+                    <div class="reveal group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 opacity-0 translate-y-6 backdrop-blur-xl transition-all duration-300 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 hover:-translate-y-1 hover:border-amber-400/20 hover:shadow-[0_25px_70px_-20px_rgba(200,169,110,0.35)] delay-300">
+                        <span class="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-amber-400 to-yellow-200 transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-2xl">💬</div>
+                        <span class="mb-4 inline-block rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-amber-300">Comunidad</span>
+                        <h3 class="mb-2 font-display text-lg font-bold text-white">7. Servidor de Discord</h3>
+                        <p class="mb-3 text-sm font-semibold text-amber-300">Canal de Comunicación</p>
+                        <p class="text-sm leading-relaxed text-slate-400">En una próxima mini actualización se añadirá el botón de acceso a nuestro servidor de Discord. Aunque estaba previsto para hoy, han surgido imprevistos que requieren mejoras adicionales antes de su publicación.</p>
                     </div>
 
-                    <!-- 8. Nuevo vídeo en YouTube muy pronto -->
-                    <div class="interactive-card reveal-up" style="transition-delay: 0.35s;">
-                        <div class="card-icon" aria-hidden="true">📺</div>
-                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Multimedia</div>
-                        <h3>8. Conferencia en YouTube</h3>
-                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
-                            Conferencia Especial
-                        </p>
-                        <p>
-                            Dos días antes del lanzamiento oficial de Distamus Edu, se publicará un vídeo especial en formato conferencia donde repasaremos todo lo anunciado y lo que está por venir. Estad atentos a nuestras redes sociales para no perderos nada.
-                        </p>
+                    <!-- 8. Conferencia en YouTube -->
+                    <div class="reveal group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 opacity-0 translate-y-6 backdrop-blur-xl transition-all duration-300 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 hover:-translate-y-1 hover:border-amber-400/20 hover:shadow-[0_25px_70px_-20px_rgba(200,169,110,0.35)] delay-[350ms]">
+                        <span class="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-amber-400 to-yellow-200 transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-2xl">📺</div>
+                        <span class="mb-4 inline-block rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-amber-300">Multimedia</span>
+                        <h3 class="mb-2 font-display text-lg font-bold text-white">8. Conferencia en YouTube</h3>
+                        <p class="mb-3 text-sm font-semibold text-amber-300">Conferencia Especial</p>
+                        <p class="text-sm leading-relaxed text-slate-400">Dos días antes del lanzamiento oficial de Distamus Edu, se publicará un vídeo especial en formato conferencia donde repasaremos todo lo anunciado y lo que está por venir. Estad atentos a nuestras redes sociales para no perderos nada.</p>
                     </div>
 
-                    <!-- 9-Personalización en la interfaz de Distamus Home y blogs -->
-                    <div class="interactive-card reveal-up" style="transition-delay: 0.4s;">
-                        <div class="card-icon" aria-hidden="true">🎨</div>
-                        <div class="badge-official" style="font-size:0.65rem; padding: 4px 10px; margin-bottom: 1rem;">Interfaz</div>
-                        <h3>9. Personalización</h3>
-                        <p style="font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.75rem;">
-                            Distamus Home y Blogs
-                        </p>
-                        <p>
-                            Como habréis notado, tanto la sección de blogs como el nombre principal que aparece al acceder a la página de inicio de Distamus han sido actualizados. Esperamos que os guste esta renovación. Seguiremos trabajando para ofrecer una experiencia cada vez más moderna, personalizable y visualmente atractiva.
-                        </p>
+                    <!-- 9. Personalización -->
+                    <div class="reveal group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] p-8 opacity-0 translate-y-6 backdrop-blur-xl transition-all duration-300 [&.is-visible]:opacity-100 [&.is-visible]:translate-y-0 hover:-translate-y-1 hover:border-amber-400/20 hover:shadow-[0_25px_70px_-20px_rgba(200,169,110,0.35)] delay-[400ms]">
+                        <span class="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-amber-400 to-yellow-200 transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true"></span>
+                        <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-2xl">🎨</div>
+                        <span class="mb-4 inline-block rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-amber-300">Interfaz</span>
+                        <h3 class="mb-2 font-display text-lg font-bold text-white">9. Personalización</h3>
+                        <p class="mb-3 text-sm font-semibold text-amber-300">Distamus Home y Blogs</p>
+                        <p class="text-sm leading-relaxed text-slate-400">Como habréis notado, tanto la sección de blogs como el nombre principal que aparece al acceder a la página de inicio de Distamus han sido actualizados. Esperamos que os guste esta renovación. Seguiremos trabajando para ofrecer una experiencia cada vez más moderna, personalizable y visualmente atractiva.</p>
                     </div>
 
                 </div>
@@ -323,73 +236,85 @@
         </section>
     </main>
 
-    <!-- Decoupled Footer component -->
-    <distamus-footer></distamus-footer>
+    <!-- ============ FOOTER ============ -->
+    <footer class="relative border-t border-white/10 bg-slate-950/60 px-4 pb-10 pt-20 sm:px-6 sm:pt-24 lg:px-8">
+        <div class="mx-auto flex max-w-7xl flex-col items-center gap-12 text-center md:flex-row md:items-start md:justify-between md:text-left">
+            <div class="md:max-w-sm">
+                <div class="mb-4 flex items-center justify-center gap-3 md:justify-start">
+                    <img src="distamuslogo.webp" alt="Distamus" class="h-8 w-8 rounded-lg">
+                    <span class="font-display text-xl font-bold text-white">Distamus</span>
+                </div>
+                <p class="text-[13px] leading-relaxed text-slate-400 sm:text-sm">Transformando el futuro digital, una actualización a la vez.</p>
+            </div>
+            <div class="flex flex-col items-center gap-10 sm:flex-row sm:items-start sm:gap-16 md:text-left">
+                <div class="flex flex-col items-center gap-3 md:items-start">
+                    <h4 class="mb-2 text-xs font-bold uppercase tracking-widest text-white">DDU 2026</h4>
+                    <a href="index.html#inicio" class="text-sm text-slate-400 transition-colors hover:text-amber-300">Inicio</a>
+                    <a href="index.html#filosofia" class="text-sm text-slate-400 transition-colors hover:text-amber-300">Filosofía</a>
+                    <a href="index.html#detalles" class="text-sm text-slate-400 transition-colors hover:text-amber-300">Evolución</a>
+                    <a href="index.html#esperar" class="text-sm text-slate-400 transition-colors hover:text-amber-300">Novedades</a>
+                </div>
+                <div class="flex flex-col items-center gap-3 md:items-start">
+                    <h4 class="mb-2 text-xs font-bold uppercase tracking-widest text-white">Historial</h4>
+                    <a href="ddu2025.html" class="text-sm text-slate-400 transition-colors hover:text-amber-300">Archivo DDU 2025</a>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto mt-14 flex max-w-7xl flex-col-reverse items-center justify-between gap-4 border-t border-white/5 pt-8 text-center sm:flex-row sm:text-left">
+            <p class="text-sm text-slate-500">© 2026 Distamus Day Update. Todos los derechos reservados. <span class="ml-1 font-medium text-amber-400">The Next Chapter Begins.</span></p>
+            <div class="rounded-full border border-amber-400/25 bg-amber-400/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-300">Archivo · DU 2025</div>
+        </div>
+    </footer>
 
-    <!-- JS Scripts for animations and header adaptation -->
     <script>
-        // Customize header dynamically for the archive page
-        window.addEventListener('DOMContentLoaded', () => {
-            const headerBtn = document.querySelector('distamus-header .header-btn');
-            if (headerBtn) {
-                headerBtn.href = 'index.html';
-                headerBtn.textContent = 'Ir a DDU 2026';
-            }
-            const mobileBtn = document.querySelector('distamus-header .mobile-only-btn');
-            if (mobileBtn) {
-                mobileBtn.href = 'index.html';
-                mobileBtn.textContent = 'Ir a DDU 2026';
-            }
-            
-            // Adjust header background border color for gold theme
-            const siteHeader = document.querySelector('distamus-header .site-header');
-            if (siteHeader) {
-                siteHeader.style.borderBottomColor = 'rgba(200, 169, 110, 0.15)';
-            }
-        });
-
-        // Intersection Observer for Scroll Animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        // Scroll reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
                 }
             });
-        }, { 
-            threshold: 0.05,
-            rootMargin: '0px 0px -30px 0px'
-        });
+        }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+        // Header scroll state
+        const header = document.getElementById('siteHeader');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('bg-slate-950/80', window.scrollY > 20);
+            header.classList.toggle('backdrop-blur-xl', window.scrollY > 20);
+            header.classList.toggle('border-b', window.scrollY > 20);
+            header.classList.toggle('border-white/10', window.scrollY > 20);
+        }, { passive: true });
 
-        // Terminal status bar clock
-        function updateTermClock() {
-            const el = document.getElementById('termTime');
-            if (el) {
-                const now = new Date();
-                const hh = String(now.getUTCHours()).padStart(2, '0');
-                const mm = String(now.getUTCMinutes()).padStart(2, '0');
-                const ss = String(now.getUTCSeconds()).padStart(2, '0');
-                el.textContent = `UTC ${hh}:${mm}:${ss}`;
-            }
+        // Mobile menu
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuInner = document.getElementById('mobileMenuInner');
+        const barTop = document.getElementById('barTop');
+        const barMid = document.getElementById('barMid');
+        const barBot = document.getElementById('barBot');
+        let menuOpen = false;
+
+        function setMenuOpen(open) {
+            menuOpen = open;
+            mobileMenu.style.maxHeight = open ? mobileMenuInner.scrollHeight + 'px' : '0px';
+            mobileMenu.style.opacity = open ? '1' : '0';
+            mobileMenu.style.borderTopColor = open ? 'rgba(255,255,255,0.1)' : 'transparent';
+            menuToggle.setAttribute('aria-expanded', String(open));
+            // Morph hamburger into an X
+            barTop.style.transform = open ? 'translateY(8px) rotate(45deg)' : '';
+            barMid.style.opacity = open ? '0' : '';
+            barBot.style.transform = open ? 'translateY(-8px) rotate(-45deg)' : '';
         }
-        setInterval(updateTermClock, 1000);
-        updateTermClock();
+
+        menuToggle.addEventListener('click', () => setMenuOpen(!menuOpen));
+        mobileMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => setMenuOpen(false));
+        });
+        window.addEventListener('resize', () => {
+            if (menuOpen) mobileMenu.style.maxHeight = mobileMenuInner.scrollHeight + 'px';
+        });
     </script>
-
-    <!-- Terminal Status Bar -->
-    <div class="terminal-statusbar" aria-hidden="true" style="border-top-color: rgba(200, 169, 110, 0.2); color: rgba(200, 169, 110, 0.45);">
-        <div class="sb-left">
-            <span><span class="sb-dot" style="background:#c8a96e; box-shadow: 0 0 6px #c8a96e;"></span>ARCHIVO::DDU-2025</span>
-            <span>ESTADO: HISTÓRICO</span>
-            <span>ACCESO: LECTURA</span>
-        </div>
-        <div class="sb-right">
-            <span style="color: rgba(200, 169, 110, 0.45);">DU-2025 // PRIMERA EDICIÓN DISTAMUS</span>
-            <span id="termTime"></span>
-        </div>
-    </div>
-
 </body>
 </html>

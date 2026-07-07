@@ -10,7 +10,10 @@
     <meta property="og:image" content="/ddu2026-banner.png">
     
     <link rel="stylesheet" href="/src/index.css">
-    
+
+    <!-- Tailwind utility layer (no preflight, so it layers on the legacy design system above) -->
+    <link rel="stylesheet" href="/src/tailwind-no-preflight.css">
+
     <!-- Scripts for Decoupled Components -->
     <script type="module" src="/src/components/Header.js"></script>
     <script type="module" src="/src/components/Footer.js"></script>
@@ -39,29 +42,30 @@
                         DDU 2026 (Distamus Day Update 2026) es el evento anual más importante de Distamus. No es una simple actualización ni una recopilación de cambios menores: representa el momento en el que se presenta la nueva etapa del proyecto.
                     </p>
                     <div class="hero-ctas">
-                        <a href="#filosofia" class="btn btn-accent" id="btnExplore">Explorar novedades</a>
+                        <a href="#filosofia" class="btn btn-accent" id="btnExplore" style="background: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 100%); color: #fff; box-shadow: 0 8px 30px rgba(139, 92, 246, 0.35);">Explorar novedades</a>
                         <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Distamus+Day+Update+2026+(DDU2026)&dates=20260710T160000Z/20260710T180000Z&details=DDU+2026+(Distamus+Day+Update+2026)+es+el+evento+anual+m%C3%A1s+importante+de+Distamus.+The+Next+Chapter+Begins.&location=Online" target="_blank" class="btn btn-outline" id="btnCalendar">Añadir al calendario</a>
                     </div>
                 </div>
 
-                <div class="hero-visual reveal-up" style="transition-delay: 0.15s;">
-                    <div class="glass-card countdown-card">
+                <div class="hero-visual reveal-up relative" style="transition-delay: 0.15s;">
+                    <div class="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-violet-500/20 via-transparent to-cyan-400/20 blur-2xl" aria-hidden="true"></div>
+                    <div class="glass-card countdown-card relative ring-1 ring-white/10 shadow-[0_30px_90px_-25px_rgba(139,92,246,0.45)]">
                         <div class="countdown-title">Tiempo restante para el lanzamiento</div>
                         <div class="countdown-grid">
-                            <div class="countdown-box">
-                                <div class="countdown-num" id="days">00</div>
+                            <div class="countdown-box hover:!ring-1 hover:!ring-violet-400/30">
+                                <div class="countdown-num" id="days" style="background: linear-gradient(180deg, #c4b5fd 0%, #67e8f9 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">00</div>
                                 <div class="countdown-label">Días</div>
                             </div>
-                            <div class="countdown-box">
-                                <div class="countdown-num" id="hours">00</div>
+                            <div class="countdown-box hover:!ring-1 hover:!ring-violet-400/30">
+                                <div class="countdown-num" id="hours" style="background: linear-gradient(180deg, #c4b5fd 0%, #67e8f9 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">00</div>
                                 <div class="countdown-label">Horas</div>
                             </div>
-                            <div class="countdown-box">
-                                <div class="countdown-num" id="minutes">00</div>
+                            <div class="countdown-box hover:!ring-1 hover:!ring-violet-400/30">
+                                <div class="countdown-num" id="minutes" style="background: linear-gradient(180deg, #c4b5fd 0%, #67e8f9 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">00</div>
                                 <div class="countdown-label">Minutos</div>
                             </div>
-                            <div class="countdown-box">
-                                <div class="countdown-num" id="seconds">00</div>
+                            <div class="countdown-box hover:!ring-1 hover:!ring-violet-400/30">
+                                <div class="countdown-num" id="seconds" style="background: linear-gradient(180deg, #c4b5fd 0%, #67e8f9 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">00</div>
                                 <div class="countdown-label">Segundos</div>
                             </div>
                         </div>
@@ -93,17 +97,17 @@
                 </div>
                 
                 <div class="grid-3">
-                    <div class="interactive-card reveal-up">
+                    <div class="interactive-card reveal-up hover:!shadow-[0_25px_70px_-20px_rgba(139,92,246,0.4)] hover:!ring-1 hover:!ring-violet-400/20">
                         <div class="card-icon" aria-hidden="true">🧬</div>
                         <h3>Evolución constante</h3>
                         <p>DDU es sinónimo de evolución. No nos conformamos con el estado actual; buscamos redefinir constantemente los límites de nuestro ecosistema.</p>
                     </div>
-                    <div class="interactive-card reveal-up" style="transition-delay: 0.1s;">
+                    <div class="interactive-card reveal-up hover:!shadow-[0_25px_70px_-20px_rgba(139,92,246,0.4)] hover:!ring-1 hover:!ring-violet-400/20" style="transition-delay: 0.1s;">
                         <div class="card-icon" aria-hidden="true">✨</div>
                         <h3>Experiencia real</h3>
                         <p>Es el día en el que meses de trabajo dejan de ser ideas, pruebas y desarrollo interno para convertirse en una experiencia real para todos los usuarios.</p>
                     </div>
-                    <div class="interactive-card reveal-up" style="transition-delay: 0.2s;">
+                    <div class="interactive-card reveal-up hover:!shadow-[0_25px_70px_-20px_rgba(139,92,246,0.4)] hover:!ring-1 hover:!ring-violet-400/20" style="transition-delay: 0.2s;">
                         <div class="card-icon" aria-hidden="true">🎯</div>
                         <h3>Convergencia única</h3>
                         <p>Cada decisión, cada mejora y cada detalle convergen en un único lanzamiento. Una visión unificada de todas nuestras plataformas.</p>
@@ -176,13 +180,13 @@
         <!-- OUTRO / FINAL CTA -->
         <section class="outro-section">
             <div class="container reveal-up">
-                <div class="outro-card">
+                <div class="outro-card ring-1 ring-white/10 shadow-[0_30px_100px_-30px_rgba(34,211,238,0.3)]">
                     <h2 class="outro-title text-gradient">DDU 2026</h2>
                     <div class="outro-subtitle">10 de Julio de 2026</div>
                     <p class="outro-desc">
                         Porque algunas actualizaciones mejoran las cosas. <strong>DDU las transforma.</strong>
                     </p>
-                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Distamus+Day+Update+2026+(DDU2026)&dates=20260710T160000Z/20260710T180000Z&details=DDU+2026+(Distamus+Day+Update+2026)+es+el+evento+anual+m%C3%A1s+importante+de+Distamus.+The+Next+Chapter+Begins.&location=Online" target="_blank" class="btn btn-accent" id="btnCalendarOutro">Asegura tu lugar en el evento</a>
+                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Distamus+Day+Update+2026+(DDU2026)&dates=20260710T160000Z/20260710T180000Z&details=DDU+2026+(Distamus+Day+Update+2026)+es+el+evento+anual+m%C3%A1s+importante+de+Distamus.+The+Next+Chapter+Begins.&location=Online" target="_blank" class="btn btn-accent" id="btnCalendarOutro" style="background: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 100%); color: #fff; box-shadow: 0 8px 30px rgba(139, 92, 246, 0.35);">Asegura tu lugar en el evento</a>
                 </div>
             </div>
         </section>

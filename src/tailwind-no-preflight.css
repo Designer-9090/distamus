@@ -1,0 +1,5 @@
+/* Same Tailwind build as src/tailwind.css, but WITHOUT @tailwind base (preflight),
+   so it can layer on top of the legacy src/index.css design system without
+   resetting its existing styles (used by pages not yet migrated off index.css). */
+@tailwind components;
+@tailwind utilities;
