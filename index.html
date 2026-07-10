@@ -104,12 +104,15 @@
 
                     <div class="relative rounded-[28px] bg-gradient-to-br from-violet-500 via-cyan-400 to-violet-500 p-[1.5px] shadow-[0_30px_90px_-20px_rgba(139,92,246,0.5)]">
                         <div class="relative overflow-hidden rounded-[26px] border border-white/10 bg-slate-950/95 p-8 backdrop-blur-2xl sm:p-10">
-                            <span class="absolute right-6 top-6 inline-flex items-center gap-1.5 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-emerald-400">
+                            <span class="mx-auto mb-4 flex w-fit items-center gap-1.5 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-emerald-400 sm:absolute sm:right-6 sm:top-6 sm:mx-0 sm:mb-0">
                                 <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400"></span>
                                 En vivo
                             </span>
-                            <div class="mb-8 text-center text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
+                            <div class="mb-2 text-center text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
                                 Tiempo restante para el lanzamiento
+                            </div>
+                            <div id="nextAnnouncement" class="mb-8 text-center text-sm font-semibold">
+                                <span class="bg-gradient-to-r from-violet-300 to-cyan-300 bg-clip-text text-transparent">Próximo anuncio • 12:00</span>
                             </div>
                             <div class="grid grid-cols-4 gap-2 sm:gap-4">
                                 <div class="rounded-2xl border border-white/5 bg-black/30 px-1 py-4 text-center transition-shadow hover:ring-1 hover:ring-violet-400/30 sm:px-2 sm:py-5">
@@ -289,17 +292,37 @@
     </footer>
 
     <script>
-        // Countdown target date: July 10, 2026 16:00:00
+        // Countdown target: the next announcement of the day (same schedule as next-chapter.html)
+        const releaseSchedule = [
+            { label: '12:00', date: new Date(2026, 6, 10, 12, 0, 0) },
+            { label: '13:00', date: new Date(2026, 6, 10, 13, 0, 0) },
+            { label: '16:00', date: new Date(2026, 6, 10, 16, 0, 0) },
+            { label: '17:00', date: new Date(2026, 6, 10, 17, 0, 0) },
+            { label: '21:00', date: new Date(2026, 6, 10, 21, 0, 0) },
+        ];
+
+        function getNextRelease() {
+            const now = new Date();
+            return releaseSchedule.find((release) => release.date > now) || null;
+        }
+
         function updateCountdown() {
-            const eventDate = new Date('July 10, 2026 16:00:00').getTime();
-            const now = new Date().getTime();
-            const distance = eventDate - now;
             const format = (num) => String(num).padStart(2, '0');
 
             const days = document.getElementById('days');
             const hours = document.getElementById('hours');
             const minutes = document.getElementById('minutes');
             const seconds = document.getElementById('seconds');
+
+            const nextRelease = getNextRelease();
+            const distance = nextRelease ? nextRelease.date.getTime() - Date.now() : 0;
+
+            const labelEl = document.getElementById('nextAnnouncement');
+            if (labelEl) {
+                labelEl.innerHTML = nextRelease
+                    ? '<span class="bg-gradient-to-r from-violet-300 to-cyan-300 bg-clip-text text-transparent">Próximo anuncio • ' + nextRelease.label + '</span>'
+                    : '<span class="bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">Todos los anuncios publicados</span>';
+            }
 
             if (distance > 0) {
                 days.textContent = format(Math.floor(distance / (1000 * 60 * 60 * 24)));

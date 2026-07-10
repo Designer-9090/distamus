@@ -364,6 +364,58 @@
         }
         setInterval(updateReleaseCountdown, 1000);
         updateReleaseCountdown();
+
+        // ── Per-post button unlock ─────────────────────────────────────────
+        // When an announcement's scheduled hour passes, its "Acceder al enlace"
+        // button activates automatically — even if no URL has been added yet.
+        // If a real URL is later set, the link works; if it's still empty, the
+        // click is prevented so it doesn't reload the page.
+        const releaseButtons = Array.from(document.querySelectorAll('a[aria-disabled="true"]')).map((button) => {
+            const card = button.closest('.reveal');
+            const timeLabel = card ? card.querySelector('.text-violet-400') : null;
+            const badge = card ? card.querySelector('.text-pink-400') : null;
+            let date = null;
+            if (timeLabel) {
+                const match = timeLabel.textContent.trim().match(/(\d{1,2}):(\d{2})/);
+                if (match) date = new Date(2026, 6, 10, Number(match[1]), Number(match[2]), 0);
+            }
+            return { button, badge, date, activated: false };
+        }).filter((entry) => entry.date);
+
+        function activateReleaseButton(entry) {
+            entry.activated = true;
+            const { button, badge } = entry;
+
+            button.removeAttribute('aria-disabled');
+            button.setAttribute('tabindex', '0');
+            button.classList.remove('cursor-not-allowed', 'border-white/10', 'bg-white/[0.04]', 'text-white/50');
+            button.classList.add(
+                'bg-gradient-to-r', 'from-violet-500', 'to-cyan-400', 'text-white',
+                'shadow-[0_8px_30px_rgba(139,92,246,0.35)]', 'transition-transform', 'hover:-translate-y-0.5'
+            );
+
+            // Keep an empty/placeholder link from navigating anywhere.
+            button.addEventListener('click', (event) => {
+                const href = button.getAttribute('href');
+                if (!href || href === '#') event.preventDefault();
+            });
+
+            // Swap the "Próximamente" badge for an active "Disponible" state.
+            if (badge) {
+                badge.classList.remove('border-pink-400/25', 'bg-pink-400/10', 'text-pink-400');
+                badge.classList.add('border-emerald-400/25', 'bg-emerald-400/10', 'text-emerald-400');
+                badge.innerHTML = '<span class="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400"></span> Disponible';
+            }
+        }
+
+        function updateReleaseButtons() {
+            const now = Date.now();
+            releaseButtons.forEach((entry) => {
+                if (!entry.activated && entry.date.getTime() <= now) activateReleaseButton(entry);
+            });
+        }
+        setInterval(updateReleaseButtons, 1000);
+        updateReleaseButtons();
     </script>
 </body>
 </html>
