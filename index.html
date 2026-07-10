@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        // El evento termina el 10 jul 2026 a las 17:45. A partir de ese instante,
+        // cualquier visita se redirige DIRECTAMENTE a 2027.html, sin mostrar esta
+        // página ni un solo milisegundo. Se ejecuta antes de renderizar el body.
+        (function () {
+            var eventEnd = new Date(2026, 6, 10, 17, 45, 0).getTime();
+            if (Date.now() >= eventEnd) window.location.replace('2027.html');
+        })();
+    </script>
     <title>Distamus Day Update 2026 — El nuevo capítulo comienza</title>
     <meta name="description" content="DDU 2026 (Distamus Day Update 2026) es el evento anual más importante de Distamus. Únete a nosotros el 10 de julio de 2026 para descubrir la evolución del proyecto.">
     <link rel="icon" type="image/webp" href="distamuslogo.webp">
@@ -298,7 +307,7 @@
             { label: '13:00', date: new Date(2026, 6, 10, 13, 0, 0) },
             { label: '16:00', date: new Date(2026, 6, 10, 16, 0, 0) },
             { label: '17:00', date: new Date(2026, 6, 10, 17, 0, 0) },
-            { label: '21:00', date: new Date(2026, 6, 10, 21, 0, 0) },
+            { label: '17:45', date: new Date(2026, 6, 10, 17, 45, 0) },
         ];
 
         function getNextRelease() {
@@ -335,6 +344,13 @@
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
+
+        // Redirección en vivo: si la página sigue abierta cuando termina el
+        // evento (17:45), se salta directamente a 2027.html.
+        const eventEnd = new Date(2026, 6, 10, 17, 45, 0).getTime();
+        setInterval(function () {
+            if (Date.now() >= eventEnd) window.location.replace('2027.html');
+        }, 1000);
 
         // Scroll reveal
         const revealObserver = new IntersectionObserver((entries) => {
